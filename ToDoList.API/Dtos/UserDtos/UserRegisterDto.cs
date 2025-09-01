@@ -3,7 +3,7 @@ using ToDoList.API.Data;
 
 namespace ToDoList.API.Dtos.UserDtos;
 
-public record class RegisterUserDto
+public record class UserRegisterDto
 (
     [Required] string FirstName,
     [Required] string LastName,
