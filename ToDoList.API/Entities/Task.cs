@@ -14,7 +14,7 @@ public class Task
     public required string Title { get; set; }
     public string? Description { get; set; }
     public required TaskStatus Status { get; set; }
-    public int UserId { get; set; }
+    public required string UserId { get; set; }
 
     public required User User { get; set; }
 }
