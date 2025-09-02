@@ -11,8 +11,8 @@ using ToDoList.API.Data;
 namespace ToDoList.API.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20250902205052_InitialCreate7")]
-    partial class InitialCreate7
+    [Migration("20250902210014_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
