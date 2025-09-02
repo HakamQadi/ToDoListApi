@@ -61,5 +61,6 @@ app.UseAuthorization();
 
 // Map endpoints
 app.MapUserEndpoints();
+app.MapTaskEndpoints();
 
 app.Run();
