@@ -18,9 +18,12 @@ public class Context : IdentityDbContext<User>
             // Rename Identity tables
             b.ToTable("Users");
 
+            //These columns needed for login
+            // b.Ignore(u => u.UserName);
+            // b.Ignore(u => u.NormalizedUserName);
+            // b.Ignore(u => u.NormalizedEmail);
+
             // Ignore columns you don't need
-            b.Ignore(u => u.UserName);
-            b.Ignore(u => u.NormalizedUserName);
             b.Ignore(u => u.EmailConfirmed);
             b.Ignore(u => u.PhoneNumber);
             b.Ignore(u => u.PhoneNumberConfirmed);
@@ -30,7 +33,6 @@ public class Context : IdentityDbContext<User>
             b.Ignore(u => u.AccessFailedCount);
             b.Ignore(u => u.ConcurrencyStamp);
             b.Ignore(u => u.SecurityStamp);
-            b.Ignore(u => u.NormalizedEmail);
         });
 
         // Store enums as strings
