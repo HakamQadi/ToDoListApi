@@ -16,5 +16,5 @@ public class Task
     public required TaskStatus Status { get; set; }
     public required string UserId { get; set; }
 
-    public required User User { get; set; }
+    public User? User { get; set; }
 }
