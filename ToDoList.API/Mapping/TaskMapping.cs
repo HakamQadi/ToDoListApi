@@ -34,7 +34,7 @@ public static class TaskMapping
             Title: task.Title,
             Description: task.Description ?? string.Empty,
             Status: (TaskStatus)task.Status,
-            UserId: int.Parse(task.UserId),
+            UserId: task.UserId,
             UserFullName: task.User is not null
             ? $"{task.User.FirstName} {task.User.LastName}"
             : string.Empty

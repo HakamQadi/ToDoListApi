@@ -5,6 +5,7 @@ public record class TaskResponseDto(
     string Title,
     string Description,
     TaskStatus Status,
-    int UserId,
+    // int UserId,
+    string UserId,
     string UserFullName
 );
