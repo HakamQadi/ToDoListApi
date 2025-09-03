@@ -15,16 +15,13 @@ public static class TaskMapping
         };
     }
 
-    public static Data.Task ToUpdateEntity(this Data.Task task, UpdateTaskDto dto, string userId)
+    public static void ToUpdateEntity(this Data.Task task, UpdateTaskDto dto, string userId)
     {
 
-        return new Data.Task()
-        {
-            Title = dto.Title,
-            Description = dto.Description,
-            Status = (Data.TaskStatus)dto.Status,
-            UserId = userId
-        };
+        task.Title = dto.Title;
+        task.Description = dto.Description;
+        task.Status = (Data.TaskStatus)dto.Status;
+        task.UserId = userId;
     }
 
     public static TaskResponseDto ToResponseDto(this Data.Task task)
