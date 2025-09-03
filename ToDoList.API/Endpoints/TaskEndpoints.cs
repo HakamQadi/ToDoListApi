@@ -46,7 +46,7 @@ public static class TaskEndpoints
             }
 
             var task = await db.Tasks
-            .Include(t => t.UserId)
+            .Include(t => t.User)
             .FirstOrDefaultAsync(t => t.Id == id && t.UserId == userId);
 
             return task is null
