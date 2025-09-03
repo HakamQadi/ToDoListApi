@@ -81,6 +81,16 @@ builder.Services.AddSwaggerGen(c =>
 builder.Services.AddScoped<JwtService>();
 builder.Services.AddAuthorization();
 builder.Services.AddSingleton<CronService>();
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", policy =>
+    {
+        policy
+            .AllowAnyOrigin()    // allow any frontend (for testing)
+            .AllowAnyMethod()
+            .AllowAnyHeader();
+    });
+});
 
 var app = builder.Build();
 
@@ -93,6 +103,7 @@ app.UseSwagger();
 app.UseSwaggerUI();
 app.UseAuthentication();
 app.UseAuthorization();
+app.UseCors("AllowAll");
 
 // Map endpoints
 app.MapUserEndpoints();
