@@ -77,11 +77,16 @@ builder.Services.AddSwaggerGen(c =>
             Array.Empty<string>()
         }
     });
-}); builder.Services.AddScoped<JwtService>();
+});
+builder.Services.AddScoped<JwtService>();
 builder.Services.AddAuthorization();
-
+builder.Services.AddSingleton<CronService>();
 
 var app = builder.Build();
+
+// Self-Ping
+var cronService = app.Services.GetRequiredService<CronService>();
+cronService.SelfPing();
 
 // Middleware
 app.UseSwagger();
