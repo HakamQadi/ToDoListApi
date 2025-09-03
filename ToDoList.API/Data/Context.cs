@@ -31,7 +31,7 @@ public class Context : IdentityDbContext<User>
             b.Ignore(u => u.LockoutEnd);
             b.Ignore(u => u.LockoutEnabled);
             b.Ignore(u => u.AccessFailedCount);
-            b.Ignore(u => u.ConcurrencyStamp);
+            // b.Ignore(u => u.ConcurrencyStamp);
             b.Ignore(u => u.SecurityStamp);
         });
 
