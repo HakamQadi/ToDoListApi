@@ -1,5 +1,6 @@
 using System;
 using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using ToDoList.API.Data;
@@ -16,7 +17,10 @@ public static class TaskEndpoints
 
         group.MapGet("/", async (Context db, HttpContext httpContext) =>
         {
-            var userId = httpContext.User.FindFirst(JwtRegisteredClaimNames.Sub)?.Value;
+            var userId =
+                httpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value
+                ?? httpContext.User.FindFirst(JwtRegisteredClaimNames.Sub)?.Value;
+
             if (userId is null)
             {
                 return Results.Unauthorized();
@@ -33,7 +37,9 @@ public static class TaskEndpoints
 
         group.MapGet("/{id}", async (int id, Context db, HttpContext httpContext) =>
         {
-            var userId = httpContext.User.FindFirst(JwtRegisteredClaimNames.Sub)?.Value;
+            var userId =
+                httpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value
+                ?? httpContext.User.FindFirst(JwtRegisteredClaimNames.Sub)?.Value;
             if (userId is null)
             {
                 return Results.Unauthorized();
@@ -53,7 +59,9 @@ public static class TaskEndpoints
             UserManager<User> UserManager,
             HttpContext httpContext) =>
         {
-            var userId = httpContext.User.FindFirst(JwtRegisteredClaimNames.Sub)?.Value;
+            var userId =
+                httpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value
+                ?? httpContext.User.FindFirst(JwtRegisteredClaimNames.Sub)?.Value;
 
             if (userId is null)
             {
@@ -72,7 +80,9 @@ public static class TaskEndpoints
         Context db,
         HttpContext httpContext) =>
         {
-            var userId = httpContext.User.FindFirst(JwtRegisteredClaimNames.Sub)?.Value;
+            var userId =
+                httpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value
+                ?? httpContext.User.FindFirst(JwtRegisteredClaimNames.Sub)?.Value;
             if (userId is null)
             {
                 return Results.Unauthorized();
@@ -93,7 +103,9 @@ public static class TaskEndpoints
 
         group.MapDelete("/delete/{id}", async (int id, Context db, HttpContext httpContext) =>
         {
-            var userId = httpContext.User.FindFirst(JwtRegisteredClaimNames.Sub)?.Value;
+            var userId =
+                httpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value
+                ?? httpContext.User.FindFirst(JwtRegisteredClaimNames.Sub)?.Value;
             if (userId is null)
             {
                 return Results.Unauthorized();
